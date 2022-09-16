@@ -5,12 +5,7 @@ import {getUsersAxios} from "../services/user.api.axios.service";
 
 export default function Users() {
     let [users, setUsers] = useState([]);
-    let [user, setUser] = useState(null);
 
-
-    const lift = (obj) => {
-        setUser(obj)
-    };
 
     useEffect(() => {
         getUsersAxios().then(value => setUsers(value.data))
@@ -18,10 +13,8 @@ export default function Users() {
 
     return (
         <div className={'block'}>
-            <div>
-            <h3> {user?.username} <br/> {user?.name} </h3>
-            </div>
-            {users.map((user, index) => (<User item={user} key={index} lift={lift}/>))}
+            {users.filter(value => value.launch_year !== '2020').map((user, index) => (
+                <User item={user} key={index}/>))}
         </div>
     );
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let axiosInstance = axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com/users",
+    baseURL: "https://api.spacexdata.com/v3/launches/",
     headers: {'Content-Type': 'application/Json',}
 });
 
