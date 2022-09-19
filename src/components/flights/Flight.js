@@ -1,4 +1,4 @@
-export default function User({item}) {
+export default function Flight({item}) {
 
     return (<div className={'rocketBlock'}>
         <h2 className={'fmName'}> Mission name - {item.mission_name}</h2>

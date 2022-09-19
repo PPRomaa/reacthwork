@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import User from "./User";
+import Flight from "./Flight";
 import {getUsersAxios} from "../services/user.api.axios.service";
 
 
-export default function Users() {
+export default function Flights() {
     let [users, setUsers] = useState([]);
 
 
@@ -14,7 +14,7 @@ export default function Users() {
     return (
         <div className={'block'}>
             {users.filter(value => value.launch_year !== '2020').map((user, index) => (
-                <User item={user} key={index}/>))}
+                <Flight item={user} key={index}/>))}
         </div>
     );
 

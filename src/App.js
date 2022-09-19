@@ -2,13 +2,13 @@ import './App.css';
 
 import './components/css/spaceX.css'
 
-import Users from "./components/users/Users";
+import Flights from "./components/flights/Flights";
 
 function App() {
   return (
     <div className="App">
         <h2 className={'title'}>SpaceX</h2>
-      <Users/>
+      <Flights/>
 
     </div>
   );
