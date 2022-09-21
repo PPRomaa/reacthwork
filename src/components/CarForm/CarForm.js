@@ -10,6 +10,7 @@ const CarForm = ({setCars, carUpdate, carSetUpdate}) => {
         resolver: joiResolver(carValidator),
         mode: "all"
     });
+
     useEffect(() => {
         if (carUpdate) {
             setValue('model', carUpdate.model);
@@ -33,7 +34,7 @@ const CarForm = ({setCars, carUpdate, carSetUpdate}) => {
             {errors.price && <span>{errors.price.message}</span>}
             <input type="text" placeholder={'year'} {...register('year', {valueAsNumber: true})}/>
             {errors.year && <span>{errors.year.message}</span>}
-            <button disabled={!isValid}>{carUpdate ? 'Update' : 'Send'}</button>
+            <button disabled={!isValid}>{carUpdate ? 'Update' : 'Save'}</button>
         </form>
     );
 };
