@@ -2,20 +2,21 @@ import css from './Car.module.css'
 import {carService} from "../../services";
 
 
-const Car = ({car, setCars}) => {
+const Car = ({car, setCars, carSetUpdate}) => {
     const {id, model, price, year} = car;
 
     const deleteCar = async () => {
         await carService.deleteById(id);
-            setCars(cars => {
-                const index = cars.findIndex(value => value.id === id);
-                cars.splice(index, 1)
-                return [...cars]
-            })
+        setCars(cars => {
+            const index = cars.findIndex(value => value.id === id);
+            cars.splice(index, 1)
+            return [...cars]
+        })
     };
 
-    const updateCar = () =>{
-
+    const updateCar = () => {
+        carSetUpdate(car)
+        console.log(car)
     }
 
     return (
