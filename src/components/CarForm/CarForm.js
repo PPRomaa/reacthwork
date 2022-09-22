@@ -13,18 +13,27 @@ const CarForm = ({setCars, carUpdate, carSetUpdate}) => {
 
     useEffect(() => {
         if (carUpdate) {
-            setValue('model', carUpdate.model);
-            setValue('price', carUpdate.price);
-            setValue('year', carUpdate.year);
+            setValue('model', carUpdate.model, {shouldValidate: true});
+            setValue('price', carUpdate.price, {shouldValidate: true});
+            setValue('year', carUpdate.year, {shouldValidate: true});
         }
-    },[carUpdate])
+    }, [carUpdate, setValue])
 
     const submit = async (car) => {
-        const {data} = await carService.create(car);
-        setCars(cars => [...cars, data])
+        if (carUpdate) {
+            const {data} = await carService.updateById(carUpdate.id, car);
+            setCars((cars) => {
+                const findCar = cars.find(value => value.id === carUpdate.id);
+                Object.assign(findCar, data)
+                carSetUpdate(null)
+                return [...cars]
+            })
+        } else {
+            const {data} = await carService.create(car);
+            setCars(cars => [...cars, data])
+        }
         reset()
     };
-
 
     return (
         <form onSubmit={handleSubmit(submit)}>
