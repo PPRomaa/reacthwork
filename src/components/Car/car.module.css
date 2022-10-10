@@ -1,0 +1,16 @@
+.cars{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(5,1fr);
+}
+.car{
+    margin: 10px;
+    border: 1px black solid;
+    border-radius: 5px;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    height: 25px;
+}
